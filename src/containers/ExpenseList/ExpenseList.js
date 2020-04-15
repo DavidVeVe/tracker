@@ -6,8 +6,6 @@ import NewExpense from "../../components/NewExpense/NewExpense";
 import Transactions from "../../components/Transactions/Transactions";
 import ListItem from "../../components/ListItem/ListItem";
 
-import data from "../../mocks/ExpenseData/ExpenseData";
-
 class ExpenseList extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +14,26 @@ class ExpenseList extends Component {
   }
 
   state = {
-    data: [],
+    data: [
+      {
+        itemName: "Pago internet",
+        amount: 500,
+        date: "2020-05-04",
+        category: "Servicios",
+      },
+      {
+        itemName: "Gasolina",
+        amount: 500,
+        date: "2020-09-05",
+        category: "Transporte",
+      },
+      {
+        itemName: "Tacos",
+        amount: 100,
+        date: "2020-01-04",
+        category: "Comida",
+      },
+    ],
     form: {
       itemName: "",
       amount: "",
@@ -27,10 +44,15 @@ class ExpenseList extends Component {
 
   itemAddTracker = (e) => {
     e.preventDefault();
+    const itemsData = [...this.state.data];
 
-    data.push(this.state.form);
+    itemsData.push(this.state.form);
+    console.log(this.state.data);
+    console.log(this.state.form);
+    console.log(itemsData);
 
     this.setState({
+      data: itemsData,
       form: {
         itemName: "",
         amount: "",
@@ -49,12 +71,22 @@ class ExpenseList extends Component {
     });
   };
 
-  itemDeletedHandler = (id) => {
-    data.pop();
+  itemDeletedHandler = (index) => {
+    const itemsData = [...this.state.data];
+    itemsData.splice(index, 1);
+    this.setState({
+      data: itemsData,
+      form: {
+        itemName: "",
+        amount: "",
+        date: "",
+        category: "",
+      },
+    });
   };
 
   render() {
-    const items = data.map((item, i) => {
+    const items = this.state.data.map((item, i) => {
       return (
         <ListItem
           key={item.itemName + i}
@@ -63,7 +95,7 @@ class ExpenseList extends Component {
           amount={item.amount}
           date={item.date}
           category={item.category}
-          itemDeleted={() => this.itemDeletedHandler(i + 1)}
+          itemDeleted={() => this.itemDeletedHandler(i)}
         />
       );
     });

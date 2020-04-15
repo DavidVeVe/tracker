@@ -11,8 +11,13 @@ const listItem = (props) => {
       <span style={{ color: "green" }}>${props.amount}</span>
       <span className="listItem__date">{props.date}</span>
       <span>{props.category}</span>
-      <span onClick={props.itemDeleted}>
-        <img className="listItem__deleteIcon" src={deleteIcon} alt="" />
+      <span>
+        <img
+          onClick={props.itemDeleted}
+          className="listItem__deleteIcon"
+          src={deleteIcon}
+          alt="trash icon"
+        />
       </span>
     </article>
   );
