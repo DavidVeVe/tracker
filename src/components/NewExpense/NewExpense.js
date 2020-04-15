@@ -12,7 +12,7 @@ const newExpense = (props) => {
   });
 
   return (
-    <form action="">
+    <form action="" className="newExpense__form">
       <input
         name="itemName"
         type="text"
@@ -22,7 +22,6 @@ const newExpense = (props) => {
       />
       <select
         name="category"
-        // id="category"
         value={props.values.category}
         ref={props.reference}
         onChange={props.changed}
@@ -44,7 +43,9 @@ const newExpense = (props) => {
         value={props.values.date}
         onChange={props.changed}
       />
-      <button onClick={props.clicked}>Agregar</button>
+      <button className="newExpense__addBtn" onClick={props.clicked}>
+        Agregar
+      </button>
     </form>
   );
 };

@@ -10,7 +10,6 @@ class ExpenseList extends Component {
   constructor(props) {
     super(props);
     this.category = React.createRef();
-    this.categories = ["Comida", "Salud", "Servicios", "Transporte", "Otro"];
   }
 
   state = {
@@ -40,25 +39,36 @@ class ExpenseList extends Component {
       date: "",
       category: "",
     },
+    categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
   };
 
   itemAddTracker = (e) => {
     e.preventDefault();
-    const itemsData = [...this.state.data];
+    // const itemsData = [...this.state.data];
 
-    itemsData.push(this.state.form);
-    console.log(this.state.data);
-    console.log(this.state.form);
-    console.log(itemsData);
+    // itemsData.push(this.state.form);
 
-    this.setState({
-      data: itemsData,
-      form: {
-        itemName: "",
-        amount: "",
-        date: "",
-        category: "",
-      },
+    // this.setState({
+    //   data: itemsData,
+    //   form: {
+    //     itemName: "",
+    //     amount: "",
+    //     date: "",
+    //     category: "",
+    //   },
+    // });
+    this.setState((prevState) => {
+      const itemsData = [...prevState.data];
+      itemsData.push(this.state.form);
+      return {
+        data: itemsData,
+        form: {
+          itemName: "",
+          amount: "",
+          date: "",
+          category: "",
+        },
+      };
     });
   };
 
@@ -72,16 +82,18 @@ class ExpenseList extends Component {
   };
 
   itemDeletedHandler = (index) => {
-    const itemsData = [...this.state.data];
-    itemsData.splice(index, 1);
-    this.setState({
-      data: itemsData,
-      form: {
-        itemName: "",
-        amount: "",
-        date: "",
-        category: "",
-      },
+    this.setState((prevState) => {
+      const itemsData = [...prevState.data];
+      itemsData.splice(index, 1);
+      return {
+        data: itemsData,
+        form: {
+          itemName: "",
+          amount: "",
+          date: "",
+          category: "",
+        },
+      };
     });
   };
 
@@ -106,7 +118,7 @@ class ExpenseList extends Component {
           clicked={this.itemAddTracker}
           changed={this.itemChangeHandler}
           values={this.state.form}
-          options={this.categories}
+          options={this.state.categories}
           selectorChanged={this.selectorChanged}
           reference={this.category}
         />

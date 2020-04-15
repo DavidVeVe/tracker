@@ -3,9 +3,10 @@
   padding: 10px 0;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   border-bottom: 1px solid #aaaaaa;
   box-sizing: border-box;
-  background-color: #c8c7e2;
+  background-color: #e1e1eb;
 }
 
 .listItem__container span {
