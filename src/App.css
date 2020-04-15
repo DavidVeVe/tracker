@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #e9e8e8;
+}
+
+.app__container {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

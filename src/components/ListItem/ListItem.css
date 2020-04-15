@@ -1,0 +1,29 @@
+.listItem__container {
+  width: 85%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #aaaaaa;
+  box-sizing: border-box;
+  background-color: #c8c7e2;
+}
+
+.listItem__container span {
+  width: 15%;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.listItem__date {
+  color: #696969;
+}
+
+.listItem__deleteIcon {
+  width: 25px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.listItem__deleteIcon:hover {
+  transform: scale(1.1);
+}
