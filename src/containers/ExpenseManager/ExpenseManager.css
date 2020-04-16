@@ -4,3 +4,9 @@
   flex-direction: column;
   align-items: center;
 }
+
+h1 {
+  font-size: 2.1rem;
+  color: #6a6a6b;
+  letter-spacing: 3px;
+}

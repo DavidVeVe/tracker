@@ -106,6 +106,7 @@ class ExpenseManager extends Component {
             reference={this.category}
           />
         </Modal>
+        <h1>Expense Manager</h1>
         <ItemsList clickedOpened={this.modalOpenedHandler} />
         {items}
       </section>
