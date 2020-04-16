@@ -1,0 +1,23 @@
+.btn {
+  width: 30%;
+  margin: 15px 0;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.add {
+  background-color: #1e22ff;
+}
+
+.add2 {
+  background-color: seagreen;
+}
+
+.cancel {
+  background-color: #fc4315;
+}

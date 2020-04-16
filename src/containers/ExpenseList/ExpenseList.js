@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import "./ExpenseList.css";
 
 import NewExpense from "../../components/NewExpense/NewExpense";
-import Transactions from "../../components/Transactions/Transactions";
+import ListItemsNames from "../../components/ListItemsNames/ListItemsNames";
 import ListItem from "../../components/ListItem/ListItem";
 import Modal from "../../components/UI/Modal/Modal";
 
@@ -14,26 +14,7 @@ class ExpenseList extends Component {
   }
 
   state = {
-    data: [
-      {
-        itemName: "Pago internet",
-        amount: 500,
-        date: "2020-05-04",
-        category: "Servicios",
-      },
-      {
-        itemName: "Gasolina",
-        amount: 500,
-        date: "2020-09-05",
-        category: "Transporte",
-      },
-      {
-        itemName: "Tacos",
-        amount: 100,
-        date: "2020-01-04",
-        category: "Comida",
-      },
-    ],
+    data: [],
     form: {
       itemName: "",
       amount: "",
@@ -41,7 +22,7 @@ class ExpenseList extends Component {
       category: "",
     },
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
-    show: true,
+    show: false,
   };
 
   itemAddTracker = (e) => {
@@ -105,6 +86,10 @@ class ExpenseList extends Component {
     this.setState({ show: false });
   };
 
+  modalOpenedHandler = () => {
+    this.setState({ show: true });
+  };
+
   render() {
     const items = this.state.data.map((item, i) => {
       return (
@@ -133,7 +118,7 @@ class ExpenseList extends Component {
             reference={this.category}
           />
         </Modal>
-        <Transactions />
+        <ListItemsNames clickedOpened={this.modalOpenedHandler} />
         {items}
       </section>
     );

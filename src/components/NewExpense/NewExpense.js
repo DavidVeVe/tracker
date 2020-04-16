@@ -2,6 +2,8 @@ import React from "react";
 
 import "./NewExpense.css";
 
+import Button from "../UI/Button/Button";
+
 const newExpense = (props) => {
   const options = props.options.map((option, i) => {
     return (
@@ -44,15 +46,12 @@ const newExpense = (props) => {
         onChange={props.changed}
       />
       <div className="newExpense__btnWrapper">
-        <button className="newExpense__btn addBtn" onClick={props.clicked}>
+        <Button btnType="add" clicked={props.clicked}>
           Agregar
-        </button>
-        <button
-          className="newExpense__btn cancelBtn"
-          onClick={props.clickClosed}
-        >
+        </Button>
+        <Button btnType="cancel" clicked={props.clickClosed}>
           Cancelar
-        </button>
+        </Button>
       </div>
     </form>
   );
