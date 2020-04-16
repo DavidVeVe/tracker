@@ -15,6 +15,16 @@
   font-size: 0.9em;
 }
 
+.listItem__name {
+  color: #f86808;
+  font-weight: bold;
+}
+
+.listItem__amount {
+  color: #4b9b4f;
+  font-weight: bold;
+}
+
 .listItem__date {
   color: #696969;
 }
