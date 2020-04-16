@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-import "./ExpenseList.css";
+import "./ExpenseManager.css";
 
-import NewExpense from "../../components/NewExpense/NewExpense";
-import ListItemsNames from "../../components/ListItemsNames/ListItemsNames";
-import ListItem from "../../components/ListItem/ListItem";
+import NewExpenseForm from "../../components/NewExpenseForm/NewExpenseForm";
+import ItemsList from "../../components/ItemsList/ItemsList";
+import Item from "../../components/Item/Item";
 import Modal from "../../components/UI/Modal/Modal";
 
-class ExpenseList extends Component {
+class ExpenseManager extends Component {
   constructor(props) {
     super(props);
     this.category = React.createRef();
@@ -27,19 +27,7 @@ class ExpenseList extends Component {
 
   itemAddTracker = (e) => {
     e.preventDefault();
-    // const itemsData = [...this.state.data];
 
-    // itemsData.push(this.state.form);
-
-    // this.setState({
-    //   data: itemsData,
-    //   form: {
-    //     itemName: "",
-    //     amount: "",
-    //     date: "",
-    //     category: "",
-    //   },
-    // });
     this.setState((prevState) => {
       const itemsData = [...prevState.data];
       itemsData.push(this.state.form);
@@ -93,7 +81,7 @@ class ExpenseList extends Component {
   render() {
     const items = this.state.data.map((item, i) => {
       return (
-        <ListItem
+        <Item
           key={item.itemName + i}
           itemId={i + 1}
           itemName={item.itemName}
@@ -108,7 +96,7 @@ class ExpenseList extends Component {
     return (
       <section className="expenseList__container">
         <Modal show={this.state.show} clickClosed={this.modalClosedHandler}>
-          <NewExpense
+          <NewExpenseForm
             clickClosed={this.modalClosedHandler}
             clicked={this.itemAddTracker}
             changed={this.itemChangeHandler}
@@ -118,11 +106,11 @@ class ExpenseList extends Component {
             reference={this.category}
           />
         </Modal>
-        <ListItemsNames clickedOpened={this.modalOpenedHandler} />
+        <ItemsList clickedOpened={this.modalOpenedHandler} />
         {items}
       </section>
     );
   }
 }
 
-export default ExpenseList;
+export default ExpenseManager;

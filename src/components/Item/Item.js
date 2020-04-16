@@ -1,9 +1,9 @@
 import React from "react";
 
-import "./ListItem.css";
+import "./Item.css";
 import deleteIcon from "../../assets/icons/delete.png";
 
-const listItem = (props) => {
+const item = (props) => {
   return (
     <article className="listItem__container">
       <span style={{ fontWeight: "bold" }}>{props.itemId}</span>
@@ -27,4 +27,4 @@ const listItem = (props) => {
   );
 };
 
-export default listItem;
+export default item;

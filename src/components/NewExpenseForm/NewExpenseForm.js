@@ -1,10 +1,10 @@
 import React from "react";
 
-import "./NewExpense.css";
+import "./NewExpenseForm.css";
 
 import Button from "../UI/Button/Button";
 
-const newExpense = (props) => {
+const newExpenseForm = (props) => {
   const options = props.options.map((option, i) => {
     return (
       <option key={option + i} value={option}>
@@ -57,4 +57,4 @@ const newExpense = (props) => {
   );
 };
 
-export default newExpense;
+export default newExpenseForm;

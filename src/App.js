@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import ExpenseManager from "./containers/ExpenseList/ExpenseList";
+import ExpenseManager from "./containers/ExpenseManager/ExpenseManager";
 
 function App() {
   return (
