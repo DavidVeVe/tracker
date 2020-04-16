@@ -1,5 +1,11 @@
-.transactions__container {
+.itemList__container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+}
+
+.itemList__tags {
   display: flex;
   justify-content: space-around;
   padding: 10px 0;
@@ -10,7 +16,7 @@
   border-radius: 5px;
 }
 
-.transactions__container span {
+.itemList__tags span {
   font-size: 1em;
   width: 15%;
   text-align: center;

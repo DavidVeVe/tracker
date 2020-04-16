@@ -4,7 +4,6 @@ import "./ExpenseManager.css";
 
 import NewExpenseForm from "../../components/NewExpenseForm/NewExpenseForm";
 import ItemsList from "../../components/ItemsList/ItemsList";
-import Item from "../../components/Item/Item";
 import Modal from "../../components/UI/Modal/Modal";
 
 class ExpenseManager extends Component {
@@ -79,20 +78,6 @@ class ExpenseManager extends Component {
   };
 
   render() {
-    const items = this.state.data.map((item, i) => {
-      return (
-        <Item
-          key={item.itemName + i}
-          itemId={i + 1}
-          itemName={item.itemName}
-          amount={item.amount}
-          date={item.date}
-          category={item.category}
-          itemDeleted={() => this.itemDeletedHandler(i)}
-        />
-      );
-    });
-
     return (
       <section className="expenseList__container">
         <Modal show={this.state.show} clickClosed={this.modalClosedHandler}>
@@ -107,8 +92,11 @@ class ExpenseManager extends Component {
           />
         </Modal>
         <h1>Expense Manager</h1>
-        <ItemsList clickedOpened={this.modalOpenedHandler} />
-        {items}
+        <ItemsList
+          clickedOpened={this.modalOpenedHandler}
+          itemsValues={this.state.data}
+          itemDeleted={this.itemDeletedHandler}
+        />
       </section>
     );
   }
