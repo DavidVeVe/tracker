@@ -45,6 +45,13 @@ const newExpenseForm = (props) => {
         value={props.values.date}
         onChange={props.changed}
       />
+      <textarea
+        name="description"
+        type="text"
+        placeholder="Descripción"
+        value={props.values.description}
+        onChange={props.changed}
+      />
       <div className="newExpense__btnWrapper">
         <Button btnType="add" clicked={props.clicked}>
           Agregar

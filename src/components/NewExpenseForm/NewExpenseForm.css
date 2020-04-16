@@ -6,7 +6,8 @@
 }
 
 .newExpense__form input,
-.newExpense__form select {
+.newExpense__form select,
+.newExpense__form textarea {
   width: 100%;
   margin: 12px 0;
   padding: 6px;

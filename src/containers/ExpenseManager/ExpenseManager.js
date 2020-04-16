@@ -4,6 +4,7 @@ import "./ExpenseManager.css";
 
 import NewExpenseForm from "../../components/NewExpenseForm/NewExpenseForm";
 import ItemsList from "../../components/ItemsList/ItemsList";
+import Description from "../../components/Description/Description";
 import Modal from "../../components/UI/Modal/Modal";
 
 class ExpenseManager extends Component {
@@ -19,9 +20,11 @@ class ExpenseManager extends Component {
       amount: "",
       date: "",
       category: "",
+      description: "",
     },
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
     show: false,
+    showDescription: false,
   };
 
   itemAddTracker = (e) => {
@@ -30,6 +33,7 @@ class ExpenseManager extends Component {
     this.setState((prevState) => {
       const itemsData = [...prevState.data];
       itemsData.push(this.state.form);
+
       return {
         data: itemsData,
         form: {
@@ -37,6 +41,7 @@ class ExpenseManager extends Component {
           amount: "",
           date: "",
           category: "",
+          description: "",
         },
         show: false,
       };
@@ -56,6 +61,7 @@ class ExpenseManager extends Component {
     this.setState((prevState) => {
       const itemsData = [...prevState.data];
       itemsData.splice(index, 1);
+
       return {
         data: itemsData,
         form: {
@@ -63,39 +69,53 @@ class ExpenseManager extends Component {
           amount: "",
           date: "",
           category: "",
+          description: "",
         },
       };
     });
   };
 
-  modalClosedHandler = (e) => {
+  modalToggleHandler = (e) => {
     e.preventDefault();
-    this.setState({ show: false });
+    const modal = this.state.show;
+    this.setState({ show: !modal });
   };
 
-  modalOpenedHandler = () => {
-    this.setState({ show: true });
+  descriptionToggleHandler = () => {
+    const description = this.state.showDescription;
+    this.setState({ showDescription: !description });
   };
 
   render() {
     return (
       <section className="expenseList__container">
-        <Modal show={this.state.show} clickClosed={this.modalClosedHandler}>
-          <NewExpenseForm
-            clickClosed={this.modalClosedHandler}
-            clicked={this.itemAddTracker}
-            changed={this.itemChangeHandler}
-            values={this.state.form}
-            options={this.state.categories}
-            selectorChanged={this.selectorChanged}
-            reference={this.category}
-          />
-        </Modal>
-        <h1>Expense Manager</h1>
+        {this.state.show ? (
+          <Modal show={this.state.show} clickClosed={this.modalToggleHandler}>
+            <NewExpenseForm
+              clickClosed={this.modalToggleHandler}
+              clicked={this.itemAddTracker}
+              changed={this.itemChangeHandler}
+              values={this.state.form}
+              options={this.state.categories}
+              selectorChanged={this.selectorChanged}
+              reference={this.category}
+            />
+          </Modal>
+        ) : (
+          <Modal
+            show={this.state.showDescription}
+            clickClosed={this.descriptionToggleHandler}
+          >
+            <Description descriptionToggle={this.descriptionToggleHandler} />
+          </Modal>
+        )}
+
+        <h1>Gestor de gastos</h1>
         <ItemsList
-          clickedOpened={this.modalOpenedHandler}
+          descriptionToggle={this.descriptionToggleHandler}
+          clickedOpened={this.modalToggleHandler}
           itemsValues={this.state.data}
-          itemDeleted={this.itemDeletedHandler}
+          clickedDeleted={this.itemDeletedHandler}
         />
       </section>
     );

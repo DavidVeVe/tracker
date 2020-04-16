@@ -6,8 +6,13 @@ import Button from "../UI/Button/Button";
 
 const listControls = (props) => (
   <div className="listControls__container">
-    <Button width="15%" btnType="add2" clicked={props.clickedOpened}>
-      Reportar gasto
+    <Button
+      width="8%"
+      fontSize="1.5rem"
+      btnType="add2"
+      clicked={props.openForm}
+    >
+      +
     </Button>
   </div>
 );

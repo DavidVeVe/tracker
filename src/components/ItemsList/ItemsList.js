@@ -15,14 +15,15 @@ const itemsList = (props) => {
         amount={item.amount}
         date={item.date}
         category={item.category}
-        itemDeleted={() => props.itemDeleted(i)}
+        itemDeleted={() => props.clickedDeleted(i)}
+        clicked={props.descriptionToggle}
       />
     );
   });
 
   return (
     <section className="itemList__container">
-      <ListControls clickedOpened={props.clickedOpened} />
+      <ListControls openForm={props.clickedOpened} />
       <section className="itemList__tags">
         <span>Id</span>
         <span>Nombre</span>
