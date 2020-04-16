@@ -5,6 +5,7 @@ import "./ExpenseList.css";
 import NewExpense from "../../components/NewExpense/NewExpense";
 import Transactions from "../../components/Transactions/Transactions";
 import ListItem from "../../components/ListItem/ListItem";
+import Modal from "../../components/UI/Modal/Modal";
 
 class ExpenseList extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class ExpenseList extends Component {
       category: "",
     },
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
+    show: true,
   };
 
   itemAddTracker = (e) => {
@@ -68,6 +70,7 @@ class ExpenseList extends Component {
           date: "",
           category: "",
         },
+        show: false,
       };
     });
   };
@@ -97,6 +100,11 @@ class ExpenseList extends Component {
     });
   };
 
+  modalClosedHandler = (e) => {
+    e.preventDefault();
+    this.setState({ show: false });
+  };
+
   render() {
     const items = this.state.data.map((item, i) => {
       return (
@@ -114,14 +122,17 @@ class ExpenseList extends Component {
 
     return (
       <section className="expenseList__container">
-        <NewExpense
-          clicked={this.itemAddTracker}
-          changed={this.itemChangeHandler}
-          values={this.state.form}
-          options={this.state.categories}
-          selectorChanged={this.selectorChanged}
-          reference={this.category}
-        />
+        <Modal show={this.state.show} clickClosed={this.modalClosedHandler}>
+          <NewExpense
+            clickClosed={this.modalClosedHandler}
+            clicked={this.itemAddTracker}
+            changed={this.itemChangeHandler}
+            values={this.state.form}
+            options={this.state.categories}
+            selectorChanged={this.selectorChanged}
+            reference={this.category}
+          />
+        </Modal>
         <Transactions />
         {items}
       </section>

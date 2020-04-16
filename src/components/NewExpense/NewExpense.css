@@ -1,5 +1,5 @@
 .newExpense__form {
-  width: 30%;
+  width: 90%;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -8,22 +8,37 @@
 .newExpense__form input,
 .newExpense__form select {
   width: 100%;
-  margin: 5px 0;
+  margin: 10px 0;
   padding: 6px;
   border: 1px solid #a5a5a5;
   border-radius: 5px;
   outline: none;
+  box-sizing: border-box;
 }
 
-.newExpense__addBtn {
-  width: 50%;
+.newExpense__btnWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.newExpense__btn {
+  width: 30%;
   margin: 15px 0;
   padding: 8px;
-  background-color: #1e22ff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
   color: #f0f0f0;
-  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.addBtn {
+  background-color: #1e22ff;
+}
+
+.cancelBtn {
+  background-color: #fc4315;
 }

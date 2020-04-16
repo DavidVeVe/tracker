@@ -43,9 +43,17 @@ const newExpense = (props) => {
         value={props.values.date}
         onChange={props.changed}
       />
-      <button className="newExpense__addBtn" onClick={props.clicked}>
-        Agregar
-      </button>
+      <div className="newExpense__btnWrapper">
+        <button className="newExpense__btn addBtn" onClick={props.clicked}>
+          Agregar
+        </button>
+        <button
+          className="newExpense__btn cancelBtn"
+          onClick={props.clickClosed}
+        >
+          Cancelar
+        </button>
+      </div>
     </form>
   );
 };
