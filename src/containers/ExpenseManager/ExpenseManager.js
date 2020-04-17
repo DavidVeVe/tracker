@@ -16,21 +16,21 @@ class ExpenseManager extends Component {
   state = {
     data: [],
     form: {
-      itemName: "",
-      amount: "",
-      date: "",
-      category: "",
-      description: "",
+      itemName: undefined,
+      amount: undefined,
+      date: undefined,
+      category: undefined,
+      description: undefined,
     },
     uxDescription: "",
-    categories: ["comida", "salud", "servicios", "transporte", "otro..."],
+    categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
     show: false,
     showDescription: false,
     incomeVersion: false,
     selectedItemIndex: null,
   };
 
-  itemAddTracker = (e) => {
+  itemAdder = (e) => {
     e.preventDefault();
 
     this.setState((prevState) => {
@@ -51,7 +51,7 @@ class ExpenseManager extends Component {
     });
   };
 
-  itemChangeHandler = ({ target }) => {
+  itemChanged = ({ target }) => {
     this.setState({
       form: {
         ...this.state.form,
@@ -60,7 +60,7 @@ class ExpenseManager extends Component {
     });
   };
 
-  itemDeletedHandler = (index, e) => {
+  itemDeleted = (index, e) => {
     e.stopPropagation();
 
     this.setState((prevState) => {
@@ -83,7 +83,16 @@ class ExpenseManager extends Component {
   modalToggleHandler = (e) => {
     e.preventDefault();
     const modal = this.state.show;
-    this.setState({ show: !modal });
+    this.setState({
+      show: !modal,
+      form: {
+        itemName: "",
+        amount: "",
+        date: "",
+        category: "",
+        description: "",
+      },
+    });
   };
 
   descriptionToggleHandler = (index) => {
@@ -105,8 +114,8 @@ class ExpenseManager extends Component {
           <Modal show={this.state.show} clickClosed={this.modalToggleHandler}>
             <NewExpenseForm
               clickClosed={this.modalToggleHandler}
-              clicked={this.itemAddTracker}
-              changed={this.itemChangeHandler}
+              clicked={this.itemAdder}
+              changed={this.itemChanged}
               values={this.state.form}
               options={this.state.categories}
               reference={this.category}
@@ -132,7 +141,7 @@ class ExpenseManager extends Component {
           descriptionToggle={this.descriptionToggleHandler}
           clickedOpened={this.modalToggleHandler}
           itemsValues={this.state.data}
-          clickedDeleted={this.itemDeletedHandler}
+          clickedDeleted={this.itemDeleted}
         />
       </section>
     );
