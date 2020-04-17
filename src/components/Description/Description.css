@@ -1,6 +1,26 @@
 .description__container {
-  width: 50%;
+  width: 60%;
   display: flex;
   align-items: center;
   flex-flow: column;
+}
+
+.noDescription {
+  color: #838383;
+}
+
+.description__text {
+  color: #222222;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.description__text::first-letter {
+  text-transform: capitalize;
+}
+
+h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: #646464;
 }

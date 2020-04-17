@@ -24,6 +24,9 @@
   color: #f86808;
   font-weight: bold;
 }
+.item__name::first-letter {
+  text-transform: capitalize;
+}
 
 .item__amount {
   color: #4b9b4f;

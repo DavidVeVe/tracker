@@ -22,9 +22,12 @@ class ExpenseManager extends Component {
       category: "",
       description: "",
     },
-    categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
+    uxDescription: "",
+    categories: ["comida", "salud", "servicios", "transporte", "otro..."],
     show: false,
     showDescription: false,
+    incomeVersion: false,
+    selectedItemIndex: null,
   };
 
   itemAddTracker = (e) => {
@@ -59,6 +62,7 @@ class ExpenseManager extends Component {
 
   itemDeletedHandler = (index, e) => {
     e.stopPropagation();
+
     this.setState((prevState) => {
       const itemsData = [...prevState.data];
       itemsData.splice(index, 1);
@@ -82,13 +86,19 @@ class ExpenseManager extends Component {
     this.setState({ show: !modal });
   };
 
-  descriptionToggleHandler = (e) => {
-    e.stopPropagation();
+  descriptionToggleHandler = (index) => {
     const description = this.state.showDescription;
-    this.setState({ showDescription: !description });
+
+    this.setState({
+      showDescription: !description,
+      selectedItemIndex: index,
+      uxDescription: this.state.data[index],
+    });
   };
 
   render() {
+    const uxDescription = this.state.uxDescription;
+
     return (
       <section className="expenseList__container">
         {this.state.show ? (
@@ -99,7 +109,6 @@ class ExpenseManager extends Component {
               changed={this.itemChangeHandler}
               values={this.state.form}
               options={this.state.categories}
-              selectorChanged={this.selectorChanged}
               reference={this.category}
             />
           </Modal>
@@ -108,11 +117,17 @@ class ExpenseManager extends Component {
             show={this.state.showDescription}
             clickClosed={this.descriptionToggleHandler}
           >
-            <Description descriptionToggle={this.descriptionToggleHandler} />
+            <Description
+              descriptionToggle={this.descriptionToggleHandler}
+              description={uxDescription ? uxDescription.description : ""}
+            />
           </Modal>
         )}
-
-        <h1>Gestor de gastos</h1>
+        {this.state.incomeVersion ? (
+          <h1>Gestor de ingresos</h1>
+        ) : (
+          <h1>Gestor de gastos</h1>
+        )}
         <ItemsList
           descriptionToggle={this.descriptionToggleHandler}
           clickedOpened={this.modalToggleHandler}
