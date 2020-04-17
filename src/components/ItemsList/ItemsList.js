@@ -15,7 +15,7 @@ const itemsList = (props) => {
         amount={item.amount}
         date={item.date}
         category={item.category}
-        itemDeleted={() => props.clickedDeleted(i)}
+        itemDeleted={(e) => props.clickedDeleted(i, e)}
         clicked={props.descriptionToggle}
       />
     );

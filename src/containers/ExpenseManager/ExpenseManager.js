@@ -57,7 +57,8 @@ class ExpenseManager extends Component {
     });
   };
 
-  itemDeletedHandler = (index) => {
+  itemDeletedHandler = (index, e) => {
+    e.stopPropagation();
     this.setState((prevState) => {
       const itemsData = [...prevState.data];
       itemsData.splice(index, 1);
@@ -81,7 +82,8 @@ class ExpenseManager extends Component {
     this.setState({ show: !modal });
   };
 
-  descriptionToggleHandler = () => {
+  descriptionToggleHandler = (e) => {
+    e.stopPropagation();
     const description = this.state.showDescription;
     this.setState({ showDescription: !description });
   };
