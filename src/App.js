@@ -7,8 +7,8 @@ import Layout from "./hoc/Layout/Layout";
 
 function App() {
   const [option, setOption] = useState({
-    income: false,
-    expense: true,
+    income: true,
+    expense: false,
   });
 
   console.log(option);

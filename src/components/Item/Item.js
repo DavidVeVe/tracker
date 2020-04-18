@@ -5,12 +5,18 @@ import deleteIcon from "../../assets/icons/delete.png";
 
 const item = (props) => {
   return (
-    <article onClick={props.clicked} className="item__container">
+    <article
+      onClick={props.clicked}
+      className={[
+        "item__container",
+        props.version ? "item__income" : "item__expense",
+      ].join(" ")}
+    >
       <span style={{ fontWeight: "bold" }}>{props.itemId}</span>
       <span className="item__name">{props.itemName}</span>
       <span className="item__amount">${props.amount}.00</span>
       <span className="item__date">{props.date}</span>
-      <span>{props.category}</span>
+      {props.version ? null : <span>{props.category}</span>}
       <span>
         <img
           onClick={props.itemDeleted}

@@ -174,12 +174,20 @@ class ExpenseManager extends Component {
   };
 
   descriptionToggleHandler = (index) => {
-    const description = this.state.showDescription;
+    const showDescription = this.state.showDescription;
+
+    let description;
+
+    if (this.props.incomeVersion) {
+      description = this.state.data.income[index];
+    } else {
+      description = this.state.data.expense[index];
+    }
 
     this.setState({
-      showDescription: !description,
+      showDescription: !showDescription,
       selectedItemIndex: index,
-      uxDescription: this.state.data[index],
+      uxDescription: description,
     });
   };
 
@@ -229,6 +237,7 @@ class ExpenseManager extends Component {
               ? this.state.data.income
               : this.state.data.expense
           }
+          version={this.props.incomeVersion}
           clickedDeleted={this.itemDeleted}
         />
       </section>

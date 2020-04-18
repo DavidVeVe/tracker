@@ -7,13 +7,13 @@ import Button from "../UI/Button/Button";
 const listControls = (props) => (
   <div className="listControls__container">
     <Button
-      width="6%"
-      fontSize="1.5rem"
-      btnType="add2"
+      width="15%"
+      fontSize=".9rem"
+      btnType="add"
       color="white"
       clicked={props.openForm}
     >
-      +
+      Nuevo
     </Button>
   </div>
 );

@@ -9,6 +9,7 @@ const itemsList = (props) => {
   const items = props.itemsValues.map((item, index) => {
     return (
       <Item
+        version={props.version}
         key={item.itemName + index}
         itemId={index + 1}
         itemName={item.itemName}
@@ -30,7 +31,7 @@ const itemsList = (props) => {
           <span>Nombre</span>
           <span>Cantidad</span>
           <span>Fecha</span>
-          <span>Categoria</span>
+          {props.version ? null : <span>Categoria</span>}
           <span></span>
         </section>
         {props.itemsValues.length >= 1 ? (
