@@ -23,3 +23,10 @@
   color: #2e2e2e;
   font-weight: 700;
 }
+
+.itemList__empty {
+  color: #a3a3a3;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}

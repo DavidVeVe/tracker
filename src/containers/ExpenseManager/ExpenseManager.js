@@ -37,7 +37,7 @@ class ExpenseManager extends Component {
     if (
       this.state.form.itemName.length !== 0 &&
       this.state.form.category.length !== 0 &&
-      this.state.form.amount.length !== 0 &&
+      (this.state.form.amount.length !== 0 || this.state.amount === "0") &&
       this.state.form.date.length !== 0
     ) {
       this.setState((prevState) => {
@@ -99,7 +99,9 @@ class ExpenseManager extends Component {
 
   modalToggleHandler = (e) => {
     e.preventDefault();
+
     const modal = this.state.show;
+
     this.setState({
       show: !modal,
       form: {

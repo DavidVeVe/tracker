@@ -6,14 +6,18 @@
 }
 
 .noDescription {
-  color: #838383;
+  color: #adadad;
 }
 
 .description__text {
   color: #222222;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   margin: 5px 0;
+  padding: 20px 30px;
+  border-radius: 5px;
+  border-bottom: 1px solid #e2e2e2;
+  /* background-color: #eeeeee; */
 }
 
 .description__text::first-letter {
@@ -23,5 +27,6 @@
 h3 {
   font-size: 1rem;
   margin: 0;
+  margin-bottom: 1rem;
   color: #646464;
 }

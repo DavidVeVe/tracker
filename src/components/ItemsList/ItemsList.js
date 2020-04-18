@@ -33,7 +33,13 @@ const itemsList = (props) => {
           <span>Categoria</span>
           <span></span>
         </section>
-        {items}
+        {props.itemsValues.length >= 1 ? (
+          items
+        ) : (
+          <p className="itemList__empty">
+            No hay registros <span>👨‍🚀</span>
+          </p>
+        )}
       </section>
     </Fragment>
   );
