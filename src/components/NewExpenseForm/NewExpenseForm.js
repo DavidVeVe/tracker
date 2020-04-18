@@ -28,7 +28,9 @@ const newExpenseForm = (props) => {
         ref={props.reference}
         onChange={props.changed}
       >
-        <option value="">-- categoria --</option>
+        <option value="" hidden disabled>
+          --categoría--
+        </option>
         {options}
       </select>
       <input
@@ -48,10 +50,15 @@ const newExpenseForm = (props) => {
       <textarea
         name="description"
         type="text"
-        placeholder="Descripción"
+        placeholder="Descripción (opcional)"
         value={props.values.description}
         onChange={props.changed}
       />
+      {!props.formValidated ? (
+        <p className="newExpense__formValidation">
+          Ingresa los campos obligatorios
+        </p>
+      ) : null}
       <div className="newExpense__btnWrapper">
         <Button btnType="add" clicked={props.clicked}>
           Agregar

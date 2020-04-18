@@ -16,12 +16,13 @@ class ExpenseManager extends Component {
   state = {
     data: [],
     form: {
-      itemName: undefined,
-      amount: undefined,
-      date: undefined,
-      category: undefined,
-      description: undefined,
+      itemName: "",
+      amount: "",
+      date: "",
+      category: "",
+      description: "",
     },
+    formValidation: true,
     uxDescription: "",
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
     show: false,
@@ -33,22 +34,37 @@ class ExpenseManager extends Component {
   itemAdder = (e) => {
     e.preventDefault();
 
-    this.setState((prevState) => {
-      const itemsData = [...prevState.data];
-      itemsData.push(this.state.form);
+    if (
+      this.state.form.itemName.length !== 0 &&
+      this.state.form.category.length !== 0 &&
+      this.state.form.amount.length !== 0 &&
+      this.state.form.date.length !== 0
+    ) {
+      this.setState((prevState) => {
+        const itemsData = [...prevState.data];
+        itemsData.push(this.state.form);
 
-      return {
-        data: itemsData,
-        form: {
-          itemName: "",
-          amount: "",
-          date: "",
-          category: "",
-          description: "",
-        },
-        show: false,
-      };
-    });
+        return {
+          data: itemsData,
+          form: {
+            itemName: "",
+            amount: "",
+            date: "",
+            category: "",
+            description: "",
+          },
+          formValidation: true,
+          show: false,
+        };
+      });
+    } else {
+      this.setState((prevState) => {
+        return {
+          show: prevState.show,
+          formValidation: false,
+        };
+      });
+    }
   };
 
   itemChanged = ({ target }) => {
@@ -57,6 +73,7 @@ class ExpenseManager extends Component {
         ...this.state.form,
         [target.name]: target.value,
       },
+      formValidation: true,
     });
   };
 
@@ -92,6 +109,7 @@ class ExpenseManager extends Component {
         category: "",
         description: "",
       },
+      formValidation: true,
     });
   };
 
@@ -119,6 +137,7 @@ class ExpenseManager extends Component {
               values={this.state.form}
               options={this.state.categories}
               reference={this.category}
+              formValidated={this.state.formValidation}
             />
           </Modal>
         ) : (
@@ -128,7 +147,7 @@ class ExpenseManager extends Component {
           >
             <Description
               descriptionToggle={this.descriptionToggleHandler}
-              description={uxDescription ? uxDescription.description : ""}
+              descriptionValues={uxDescription ? uxDescription : {}}
             />
           </Modal>
         )}
