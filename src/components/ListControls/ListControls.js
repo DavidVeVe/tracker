@@ -10,6 +10,7 @@ const listControls = (props) => (
       width="6%"
       fontSize="1.5rem"
       btnType="add2"
+      color="white"
       clicked={props.openForm}
     >
       +

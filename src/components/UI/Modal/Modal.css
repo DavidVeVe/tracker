@@ -9,4 +9,5 @@
   display: flex;
   justify-content: center;
   border-radius: 5px;
+  transition: all 0.3s ease-out;
 }

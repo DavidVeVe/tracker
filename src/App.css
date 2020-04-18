@@ -5,10 +5,3 @@ body {
   background-color: #f7f7f7;
   font-family: "Manrope", sans-serif;
 }
-
-.app__container {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}

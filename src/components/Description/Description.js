@@ -18,6 +18,7 @@ const description = (props) => {
         <p className="noDescription">Este registro no tiene descripción.</p>
       )}
       <Button
+        color="white"
         with="auto"
         fontSize=".8rem"
         btnType="cancel"

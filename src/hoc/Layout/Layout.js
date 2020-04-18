@@ -1,11 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 
-import classes from "./Layout.css";
+import "./Layout.css";
 
-class Layout extends Component {
-  render() {
-    return <div>{this.props.children}</div>;
-  }
-}
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+
+const Layout = (props) => {
+  return (
+    <section className="layout_container">
+      <Toolbar
+        showIncome={props.showIncomeComponent}
+        showExpenses={props.showExpenseComponent}
+      />
+      {props.children}
+    </section>
+  );
+};
 
 export default Layout;

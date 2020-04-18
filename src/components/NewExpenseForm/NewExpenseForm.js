@@ -22,17 +22,19 @@ const newExpenseForm = (props) => {
         value={props.values.itemName}
         onChange={props.changed}
       />
-      <select
-        name="category"
-        value={props.values.category}
-        ref={props.reference}
-        onChange={props.changed}
-      >
-        <option value="" hidden disabled>
-          --categoría--
-        </option>
-        {options}
-      </select>
+      {props.incomeVersion ? null : (
+        <select
+          name="category"
+          value={props.values.category}
+          ref={props.reference}
+          onChange={props.changed}
+        >
+          <option value="" hidden disabled>
+            --categoría--
+          </option>
+          {options}
+        </select>
+      )}
       <input
         name="amount"
         type="number"
@@ -60,10 +62,10 @@ const newExpenseForm = (props) => {
         </p>
       ) : null}
       <div className="newExpense__btnWrapper">
-        <Button btnType="add" clicked={props.clicked}>
+        <Button color="white" btnType="add" clicked={props.clicked}>
           Agregar
         </Button>
-        <Button btnType="cancel" clicked={props.clickClosed}>
+        <Button color="white" btnType="cancel" clicked={props.clickClosed}>
           Cancelar
         </Button>
       </div>
