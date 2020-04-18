@@ -38,7 +38,7 @@ const itemsList = (props) => {
           items
         ) : (
           <p className="itemList__empty">
-            No hay registros <span>👨‍🚀</span>
+            No hay registros <span role="img">👨‍🚀</span>
           </p>
         )}
       </section>

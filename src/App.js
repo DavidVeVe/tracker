@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./App.css";
 
-import ExpenseManager from "./containers/ExpenseManager/ExpenseManager";
+import ItemsManager from "./containers/ItemsManager/ItemsManager";
 import Layout from "./hoc/Layout/Layout";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
       showIncomeComponent={showIncomeHandler}
       showExpenseComponent={showExpensesHandler}
     >
-      <ExpenseManager incomeVersion={option.income} />
+      <ItemsManager incomeVersion={option.income} />
     </Layout>
   );
 }
