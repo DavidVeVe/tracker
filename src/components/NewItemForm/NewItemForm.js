@@ -63,7 +63,7 @@ const newItemForm = (props) => {
       ) : null}
       <div className="newExpense__btnWrapper">
         <Button color="white" btnType="add" clicked={props.clicked}>
-          Agregar
+          Guardar
         </Button>
         <Button color="white" btnType="cancel" clicked={props.clickClosed}>
           Cancelar

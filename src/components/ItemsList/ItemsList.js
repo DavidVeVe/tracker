@@ -17,6 +17,7 @@ const itemsList = (props) => {
         date={item.date}
         category={item.category}
         itemDeleted={(event) => props.clickedDeleted(index, event)}
+        itemEdited={(event) => props.clickedEdited(index, event)}
         clicked={() => props.descriptionToggle(index)}
       />
     );

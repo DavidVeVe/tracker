@@ -31,6 +31,7 @@ class ItemsManager extends Component {
       date: "",
       description: "",
     },
+    editable: false,
     formValidation: true,
     uxDescription: "",
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
@@ -54,8 +55,13 @@ class ItemsManager extends Component {
       this.setState((prevState) => {
         const incomeData = [...prevState.data.income];
         const expenseData = [...prevState.data.expense];
-        if (this.props.incomeVersion) {
+
+        if (this.props.incomeVersion && this.state.editable) {
+          incomeData[this.state.selectedItemIndex] = this.state.incomeForm;
+        } else if (this.props.incomeVersion) {
           incomeData.push(this.state.incomeForm);
+        } else if (!this.props.incomeVersion && this.state.editable) {
+          expenseData[this.state.selectedItemIndex] = this.state.expenseForm;
         } else {
           expenseData.push(this.state.expenseForm);
         }
@@ -69,7 +75,6 @@ class ItemsManager extends Component {
             itemName: "",
             amount: "",
             date: "",
-            category: "",
             description: "",
           },
           expenseForm: {
@@ -134,7 +139,6 @@ class ItemsManager extends Component {
           itemName: "",
           amount: "",
           date: "",
-          category: "",
           description: "",
         },
         expenseForm: {
@@ -145,6 +149,42 @@ class ItemsManager extends Component {
           description: "",
         },
       };
+    });
+  };
+
+  itemEdited = (index, e) => {
+    e.stopPropagation();
+
+    const incomeData = [...this.state.data.income];
+    const expenseData = [...this.state.data.expense];
+
+    this.setState((prevState) => {
+      if (this.props.incomeVersion) {
+        return {
+          incomeForm: {
+            itemName: incomeData[index].itemName,
+            amount: incomeData[index].amount,
+            date: incomeData[index].date,
+            description: incomeData[index].description,
+          },
+          editable: true,
+          show: true,
+          selectedItemIndex: index,
+        };
+      } else {
+        return {
+          expenseForm: {
+            itemName: expenseData[index].itemName,
+            amount: expenseData[index].amount,
+            date: expenseData[index].date,
+            category: expenseData[index].category,
+            description: expenseData[index].description,
+          },
+          editable: true,
+          show: true,
+          selectedItemIndex: index,
+        };
+      }
     });
   };
 
@@ -159,7 +199,6 @@ class ItemsManager extends Component {
         itemName: "",
         amount: "",
         date: "",
-        category: "",
         description: "",
       },
       expenseForm: {
@@ -169,7 +208,9 @@ class ItemsManager extends Component {
         category: "",
         description: "",
       },
+      editable: false,
       formValidation: true,
+      selectedItemIndex: null,
     });
   };
 
@@ -192,6 +233,8 @@ class ItemsManager extends Component {
   };
 
   render() {
+    console.log(this.state.editable);
+    console.log(this.state.selectedItemIndex);
     const uxDescription = this.state.uxDescription;
 
     let totalData;
@@ -255,6 +298,7 @@ class ItemsManager extends Component {
           }
           version={this.props.incomeVersion}
           clickedDeleted={this.itemDeleted}
+          clickedEdited={this.itemEdited}
         />
       </section>
     );

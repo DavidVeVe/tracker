@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Item.css";
 import deleteIcon from "../../assets/icons/delete.png";
-import editIcon from "../../assets/icons/edit.png";
+import editIcon from "../../assets/icons/edit2.png";
 
 const item = (props) => {
   return (
@@ -19,7 +19,12 @@ const item = (props) => {
       <span className="item__date">{props.date}</span>
       {props.version ? null : <span>{props.category}</span>}
       <div className="item__actions">
-        <img className="item__icons edit" src={editIcon} alt="edit icon" />
+        <img
+          onClick={props.itemEdited}
+          className="item__icons"
+          src={editIcon}
+          alt="edit icon"
+        />
         <img
           onClick={props.itemDeleted}
           className="item__icons"
