@@ -13,7 +13,7 @@ const item = (props) => {
         props.version ? "item__income" : "item__expense",
       ].join(" ")}
     >
-      <span style={{ fontWeight: "bold" }}>{props.itemId}</span>
+      <span className="item__id">{props.itemId}</span>
       <span className="item__name">{props.itemName}</span>
       <span className="item__amount">${props.amount}.00</span>
       <span className="item__date">{props.date}</span>

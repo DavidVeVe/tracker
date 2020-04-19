@@ -27,6 +27,9 @@
   letter-spacing: 1px;
 }
 
+.item__id {
+  color: #696969;
+}
 .item__date {
   color: #696969;
 }

@@ -27,10 +27,13 @@
 }
 
 span {
-  text-transform: capitalize;
   font-weight: bold;
   color: #222222;
   margin: 5px 0;
+}
+
+span::first-letter {
+  text-transform: capitalize;
 }
 
 .description__text::first-letter {

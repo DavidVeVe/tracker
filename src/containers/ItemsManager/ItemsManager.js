@@ -34,6 +34,7 @@ class ItemsManager extends Component {
     },
     editable: false,
     formValidation: true,
+    deleteItemName: "",
     uxDescription: "",
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
     show: false,
@@ -219,15 +220,23 @@ class ItemsManager extends Component {
 
   toggleDeletePopup = (index, e) => {
     e.stopPropagation();
+
+    let itemName;
+
+    if (this.props.incomeVersion) {
+      itemName = this.state.data.income[index];
+    } else {
+      itemName = this.state.data.expense[index];
+    }
+
     this.setState({
       showDeletePopup: !this.state.showDeletePopup,
       selectedItemIndex: index,
+      deleteItemName: itemName,
     });
   };
 
   descriptionToggleHandler = (index) => {
-    const showDescription = this.state.showDescription;
-
     let description;
 
     if (this.props.incomeVersion) {
@@ -237,7 +246,7 @@ class ItemsManager extends Component {
     }
 
     this.setState({
-      showDescription: !showDescription,
+      showDescription: !this.state.showDescription,
       selectedItemIndex: index,
       uxDescription: description,
     });
@@ -245,6 +254,7 @@ class ItemsManager extends Component {
 
   render() {
     const uxDescription = this.state.uxDescription;
+    const deleteItemName = this.state.deleteItemName;
 
     let totalData;
     if (this.props.incomeVersion) {
@@ -268,6 +278,7 @@ class ItemsManager extends Component {
           togglePopup={this.toggleDeletePopup}
           itemDeleted={this.itemDeleted}
           itemIndex={this.state.selectedItemIndex}
+          name={deleteItemName ? deleteItemName : {}}
         />
         {this.state.show ? (
           <Modal show={this.state.show} clickClosed={this.modalToggleHandler}>

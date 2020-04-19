@@ -10,3 +10,21 @@
   display: flex;
   justify-content: space-around;
 }
+
+.deletePopup__name {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #646464;
+}
+
+.deletePopup__name-itemName {
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #222222;
+}
+
+.deletePopup__name-itemName::first-letter {
+  text-transform: capitalize;
+}
