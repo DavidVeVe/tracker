@@ -38,7 +38,7 @@ const newItemForm = (props) => {
       <input
         name="amount"
         type="number"
-        placeholder="Cantidad"
+        placeholder="Monto"
         value={props.values.amount}
         onChange={props.changed}
       />

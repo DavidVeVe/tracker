@@ -9,6 +9,8 @@ const description = (props) => {
     <div className="description__container">
       {props.descriptionValues.description ? (
         <Fragment>
+          <p className="description__name">Nombre :</p>
+          <span>{props.descriptionValues.itemName}</span>
           <h3>Descripción:</h3>
           <p className="description__text">
             {props.descriptionValues.description}
@@ -21,7 +23,7 @@ const description = (props) => {
         color="white"
         with="auto"
         fontSize=".8rem"
-        btnType="cancel"
+        btnType="add"
         clicked={props.descriptionToggle}
       >
         Ok

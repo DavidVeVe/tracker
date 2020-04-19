@@ -2,8 +2,11 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .listControls__total span {
   font-weight: bold;
+  color: #2e9225;
+  letter-spacing: 2px;
 }

@@ -26,7 +26,7 @@ const item = (props) => {
           alt="edit icon"
         />
         <img
-          onClick={props.itemDeleted}
+          onClick={props.togglePopup}
           className="item__icons"
           src={deleteIcon}
           alt="trash icon"

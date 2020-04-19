@@ -16,9 +16,10 @@ const itemsList = (props) => {
         amount={item.amount}
         date={item.date}
         category={item.category}
-        itemDeleted={(event) => props.clickedDeleted(index, event)}
-        itemEdited={(event) => props.clickedEdited(index, event)}
+        itemEdited={(e) => props.clickedEdited(index, e)}
+        itemDeleted={(e) => props.itemDeleted(index, e)}
         clicked={() => props.descriptionToggle(index)}
+        togglePopup={(e) => props.togglePopup(index, e)}
       />
     );
   });

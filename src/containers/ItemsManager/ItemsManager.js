@@ -6,6 +6,7 @@ import NewItemForm from "../../components/NewItemForm/NewItemForm";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import Description from "../../components/Description/Description";
 import Modal from "../../components/UI/Modal/Modal";
+import DeletePopup from "../../components/DeletePopup/DeletePopup";
 
 class ItemsManager extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class ItemsManager extends Component {
     categories: ["Comida", "Salud", "Servicios", "Transporte", "Otro"],
     show: false,
     showDescription: false,
+    showDeletePopup: false,
     selectedItemIndex: null,
   };
 
@@ -148,6 +150,7 @@ class ItemsManager extends Component {
           category: "",
           description: "",
         },
+        showDeletePopup: false,
       };
     });
   };
@@ -214,6 +217,14 @@ class ItemsManager extends Component {
     });
   };
 
+  toggleDeletePopup = (index, e) => {
+    e.stopPropagation();
+    this.setState({
+      showDeletePopup: !this.state.showDeletePopup,
+      selectedItemIndex: index,
+    });
+  };
+
   descriptionToggleHandler = (index) => {
     const showDescription = this.state.showDescription;
 
@@ -233,8 +244,6 @@ class ItemsManager extends Component {
   };
 
   render() {
-    console.log(this.state.editable);
-    console.log(this.state.selectedItemIndex);
     const uxDescription = this.state.uxDescription;
 
     let totalData;
@@ -254,6 +263,12 @@ class ItemsManager extends Component {
 
     return (
       <section className="expenseList__container">
+        <DeletePopup
+          showPopup={this.state.showDeletePopup}
+          togglePopup={this.toggleDeletePopup}
+          itemDeleted={this.itemDeleted}
+          itemIndex={this.state.selectedItemIndex}
+        />
         {this.state.show ? (
           <Modal show={this.state.show} clickClosed={this.modalToggleHandler}>
             <NewItemForm
@@ -297,8 +312,9 @@ class ItemsManager extends Component {
               : this.state.data.expense
           }
           version={this.props.incomeVersion}
-          clickedDeleted={this.itemDeleted}
           clickedEdited={this.itemEdited}
+          itemDeleted={this.itemDeleted}
+          togglePopup={this.toggleDeletePopup}
         />
       </section>
     );
