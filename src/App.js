@@ -11,14 +11,11 @@ function App() {
     expense: false,
   });
 
-  console.log(option);
-
   const showIncomeHandler = () => {
     setOption({
       income: true,
       expense: false,
     });
-    console.log(option);
   };
 
   const showExpensesHandler = () => {
@@ -26,7 +23,6 @@ function App() {
       income: false,
       expense: true,
     });
-    console.log(option);
   };
 
   return (

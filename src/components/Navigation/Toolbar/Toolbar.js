@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./Toolbar.css";
 
@@ -21,7 +21,7 @@ const Toolbar = (props) => {
             Gastos
           </Button>
         </div>
-        <Button width="16%">Salir</Button>
+        <span className="toolbar__exit">salir</span>
       </div>
     </nav>
   );

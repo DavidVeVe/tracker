@@ -15,6 +15,15 @@ const listControls = (props) => (
     >
       Nuevo
     </Button>
+    {props.version ? (
+      <p className="listControls__total">
+        Ingresos total: <span>$ {props.total}.00</span>
+      </p>
+    ) : (
+      <p className="listControls__total">
+        Gastos total: <span>$ {props.total}.00</span>
+      </p>
+    )}
   </div>
 );
 

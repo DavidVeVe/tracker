@@ -194,6 +194,21 @@ class ItemsManager extends Component {
   render() {
     const uxDescription = this.state.uxDescription;
 
+    let totalData;
+    if (this.props.incomeVersion) {
+      totalData = this.state.data.income;
+    } else {
+      totalData = this.state.data.expense;
+    }
+
+    const total = totalData
+      .map((item) => {
+        return parseInt(item.amount);
+      })
+      .reduce((sum, el) => {
+        return sum + el;
+      }, 0);
+
     return (
       <section className="expenseList__container">
         {this.state.show ? (
@@ -230,6 +245,7 @@ class ItemsManager extends Component {
           <h1>Gestor de gastos</h1>
         )}
         <ItemsList
+          totalAmount={total}
           descriptionToggle={this.descriptionToggleHandler}
           clickedOpened={this.modalToggleHandler}
           itemsValues={

@@ -25,7 +25,11 @@ const itemsList = (props) => {
   return (
     <Fragment>
       <section className="itemList__container">
-        <ListControls openForm={props.clickedOpened} />
+        <ListControls
+          version={props.version}
+          total={props.totalAmount}
+          openForm={props.clickedOpened}
+        />
         <section className="itemList__tags">
           <span>Id</span>
           <span>Nombre</span>
@@ -38,7 +42,10 @@ const itemsList = (props) => {
           items
         ) : (
           <p className="itemList__empty">
-            No hay registros <span role="img">👨‍🚀</span>
+            No hay registros{" "}
+            <span role="img" aria-label="astronaut">
+              👨‍🚀
+            </span>
           </p>
         )}
       </section>
