@@ -57,9 +57,7 @@ const newItemForm = (props) => {
         onChange={props.changed}
       />
       {!props.formValidated ? (
-        <p className="newExpense__formValidation">
-          Ingresa los campos obligatorios
-        </p>
+        <p className="newExpense__formValidation">Hay campos vacios</p>
       ) : null}
       <div className="newExpense__btnWrapper">
         <Button color="white" btnType="add" clicked={props.clicked}>
