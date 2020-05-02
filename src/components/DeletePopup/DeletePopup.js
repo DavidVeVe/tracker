@@ -13,7 +13,10 @@ const deletePopup = (props) => {
       clickClosed={(e) => props.togglePopup(null, e)}
     >
       <div className="deletePopup__container">
-        <p style={{ fontWeight: "bold", color: "#222222" }}>
+        <p
+          className="deletePopup__container-q"
+          style={{ fontWeight: "bold", color: "#222222" }}
+        >
           ¿Estas seguro que deseas eliminar este registro?
         </p>
         <p className="deletePopup__name">Nombre:</p>

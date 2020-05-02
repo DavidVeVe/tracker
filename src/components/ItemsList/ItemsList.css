@@ -30,3 +30,15 @@
   font-weight: bold;
   font-size: 1.3rem;
 }
+
+@media (max-width: 600px) {
+  .itemList__tags {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .itemList__container {
+    width: 100%;
+  }
+}

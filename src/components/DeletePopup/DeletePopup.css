@@ -28,3 +28,12 @@
 .deletePopup__name-itemName::first-letter {
   text-transform: capitalize;
 }
+
+@media (max-width: 600px) {
+  .deletePopup__btns {
+    width: 80%;
+  }
+  .deletePopup__container-q {
+    text-align: center;
+  }
+}

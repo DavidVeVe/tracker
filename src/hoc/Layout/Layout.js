@@ -8,6 +8,7 @@ const Layout = (props) => {
   return (
     <section className="layout_container">
       <Toolbar
+        showMenu={props.showMenu}
         showIncome={props.showIncomeComponent}
         showExpenses={props.showExpenseComponent}
       />

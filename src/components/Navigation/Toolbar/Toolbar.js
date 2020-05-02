@@ -6,7 +6,11 @@ import Button from "../../UI/Button/Button";
 
 const Toolbar = (props) => {
   return (
-    <nav className="toolbar__container">
+    <nav
+      className={["toolbar__container", props.showMenu ? "showMenu" : ""].join(
+        " "
+      )}
+    >
       <div className="toolbar__buttons">
         <div className="toolbar__controls">
           <Button
@@ -21,7 +25,6 @@ const Toolbar = (props) => {
             Gastos
           </Button>
         </div>
-        <span className="toolbar__exit">salir</span>
       </div>
     </nav>
   );

@@ -1,12 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import "./Modal.css";
 
 import Backdrop from "../Backdrop/Backdrop";
-import Aux from "../../../hoc/Auxiliary/Auxiliary";
 
 const modal = (props) => (
-  <Aux>
+  <Fragment>
     <Backdrop show={props.show} clicked={props.clickClosed} />
     <div
       style={{
@@ -17,7 +16,7 @@ const modal = (props) => (
     >
       {props.children}
     </div>
-  </Aux>
+  </Fragment>
 );
 
 export default modal;

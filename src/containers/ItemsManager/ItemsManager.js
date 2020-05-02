@@ -7,6 +7,7 @@ import ItemsList from "../../components/ItemsList/ItemsList";
 import Description from "../../components/Description/Description";
 import Modal from "../../components/UI/Modal/Modal";
 import DeletePopup from "../../components/DeletePopup/DeletePopup";
+import menuIcon from "../../assets/icons/menu.png";
 
 class ItemsManager extends Component {
   constructor(props) {
@@ -308,6 +309,12 @@ class ItemsManager extends Component {
             />
           </Modal>
         )}
+        <img
+          className="menuIcon"
+          onClick={this.props.menuClicked}
+          src={menuIcon}
+          alt=""
+        />
         {this.props.incomeVersion ? (
           <h1>Gestor de ingresos</h1>
         ) : (

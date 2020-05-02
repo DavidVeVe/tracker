@@ -11,6 +11,8 @@ function App() {
     expense: false,
   });
 
+  const [showMenu, setShowMenu] = useState(false);
+
   const showIncomeHandler = () => {
     setOption({
       income: true,
@@ -25,12 +27,20 @@ function App() {
     });
   };
 
+  const showMenuHandler = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <Layout
+      showMenu={showMenu}
       showIncomeComponent={showIncomeHandler}
       showExpenseComponent={showExpensesHandler}
     >
-      <ItemsManager incomeVersion={option.income} />
+      <ItemsManager
+        menuClicked={showMenuHandler}
+        incomeVersion={option.income}
+      />
     </Layout>
   );
 }
